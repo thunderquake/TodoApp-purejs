@@ -1,0 +1,23 @@
+{
+  "name": "todoapp-purejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thunderquake/TodoApp-purejs.git"
+  },
+  "author": "thunderquake",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thunderquake/TodoApp-purejs/issues"
+  },
+  "homepage": "https://github.com/thunderquake/TodoApp-purejs#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
