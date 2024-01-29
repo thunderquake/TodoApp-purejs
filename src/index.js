@@ -1,8 +1,9 @@
-import { create3Column, todosPage } from "./app.js"
+import { todosPage } from "./app.js"
 import { addTodoRow } from "./components/CreateTodoRow.js";
 import { todosTable } from "./components/TodoTable.js"
 import { todoNote } from "./helpers/notes.js";
 import { renderButton } from "./helpers/renderButton.js"
+import { createThreeColumn } from "./components/Containers.js";
 import {assignIdNote, renderArchived, renderUnarchived} from "./helpers/storingData.js"
 
 function startApp() {
@@ -34,7 +35,7 @@ function startApp() {
     todosUnarchiveButton.classList.add("overflow-hidden", "shadow-lg")
     rootElement.appendChild(todosUnarchiveButton);
 
-    const buttons = create3Column(todosArchiveButton, todosAddButton, todosUnarchiveButton);
+    const buttons = createThreeColumn(todosArchiveButton, todosAddButton, todosUnarchiveButton);
     rootElement.appendChild(buttons);
 
     const todosTableElement = todosTable();
