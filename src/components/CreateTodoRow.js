@@ -1,4 +1,4 @@
-import { iconElementRender } from "../helpers/icons.js";
+import { iconElementRender } from "./IconsButton.js";
 import { addTdButton, addButtonsContainer } from "../helpers/renderButton.js";
 import { getId } from "../helpers/storingData.js";
 import { getDate } from "../helpers/getDate.js";
