@@ -1,10 +1,9 @@
 import { iconElementRender } from "./IconsButton.js";
 import { addTdButton, addButtonsContainer } from "../helpers/renderButton.js";
-import { getId } from "../helpers/storingData.js";
 import { getDate } from "../helpers/getDate.js";
 
 export function addTodoRow(obj) {
-    const idRow = getId(obj);
+    const idRow = obj.id;
 
     const tr = document.createElement("tr");
     tr.classList.add("rounded-3xl", "bg-white/50");
