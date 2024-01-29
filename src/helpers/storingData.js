@@ -46,21 +46,11 @@ export function archiveRow(note) {
     })); 
 }
 
-function createId() {
-    const id = crypto.randomUUID();
-    return id;
-}
-
 export function assignIdNote(note) {
   const tableData = getTableData();
-  const createdNote = { ...note, id: createId() };
+  const createdNote = { ...note, id: crypto.randomUUID() };
   saveTableData([...tableData, createdNote]);
   return createdNote;
-}
-
-export function getId(note) {
-    const id = note.id;
-    return id;
 }
 
 export function renderArchived() {
