@@ -22,7 +22,7 @@ export function todosTable() {
     tableHeaderRow.classList.add("border", "border-slate-500", "pb-2")
     thead.appendChild(tableHeaderRow);
 
-    headers.forEach(function (header) {
+    headers.forEach(header => {
         const th = document.createElement('th');
         th.textContent = header;
         th.classList.add("text-left")
