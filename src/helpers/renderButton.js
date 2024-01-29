@@ -1,5 +1,5 @@
 import { changeRowState, deleteRow } from "./storingData.js";
-import { buttonIconElementRender } from "./icons.js";
+import { buttonIconElementRender } from "../components/IconsButton.js";
 
 export function renderButton(text, funct) {
     const button = document.createElement('button');
