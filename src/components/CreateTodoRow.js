@@ -3,47 +3,46 @@ import { addTdButton, addButtonsContainer } from "../helpers/renderButton.js";
 import { getDate } from "../helpers/getDate.js";
 
 export function addTodoRow(obj) {
-    const idRow = obj.id;
+  const idRow = obj.id;
 
-    const tr = document.createElement("tr");
-    tr.classList.add("rounded-3xl", "bg-white/50");
-    tr.setAttribute("id", idRow);
-    
-    const iconElement = iconElementRender(obj.category);
-    addTd(iconElement, tr);
+  const tr = document.createElement("tr");
+  tr.classList.add("rounded-3xl", "bg-white/50");
+  tr.setAttribute("id", idRow);
 
-    const { isArchived, id, contents, ...renderedProperties } = obj;
+  const iconElement = iconElementRender(obj.category);
+  addTd(iconElement, tr);
 
-    Object.values(renderedProperties).forEach((value) => {
-        const td = document.createElement('td');
-        td.classList.add("text-left");
-        td.textContent = value;
-        tr.appendChild(td);
-    });
+  const { isArchived, id, contents, ...renderedProperties } = obj;
 
-    const contentsTd = document.createElement('td');
-    contentsTd.classList.add("text-left");
-    contentsTd.textContent = contents;
-    tr.appendChild(contentsTd);
+  Object.values(renderedProperties).forEach((value) => {
+    const td = document.createElement("td");
+    td.classList.add("text-left");
+    td.textContent = value;
+    tr.appendChild(td);
+  });
 
-    const dateTd = document.createElement('td');
-    dateTd.classList.add("text-left");
-    dateTd.textContent = getDate(contents);
-    tr.appendChild(dateTd);
+  const contentsTd = document.createElement("td");
+  contentsTd.classList.add("text-left");
+  contentsTd.textContent = contents;
+  tr.appendChild(contentsTd);
 
-    const buttonsCont = addButtonsContainer(obj);
+  const dateTd = document.createElement("td");
+  dateTd.classList.add("text-left");
+  dateTd.textContent = getDate(contents);
+  tr.appendChild(dateTd);
 
-    addTdButton(buttonsCont, tr);
-    
-    const tbody = document.getElementById("tbody");
+  const buttonsCont = addButtonsContainer(obj);
 
-    tbody.appendChild(tr);
+  addTdButton(buttonsCont, tr);
+
+  const tbody = document.getElementById("tbody");
+
+  tbody.appendChild(tr);
 }
 
 function addTd(value, tr) {
-    const td = document.createElement('td');
-    td.classList.add("pl-6", "text-left");
-    td.append(value);
-    tr.appendChild(td);
+  const td = document.createElement("td");
+  td.classList.add("pl-6", "text-left");
+  td.append(value);
+  tr.appendChild(td);
 }
-

@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 @layer base {
-    p {
-        @apply text-white text-xl
-    }
+  p {
+    @apply text-white text-xl;
+  }
 }
 
 @layer base {
-    table{
-        @apply text-black text-xl
-    }
+  table {
+    @apply text-black text-xl;
+  }
 }
 
 @layer base {
-    body {
-        font-family: monospace, sans-serif;
-    }
+  body {
+    font-family: monospace, sans-serif;
+  }
 }

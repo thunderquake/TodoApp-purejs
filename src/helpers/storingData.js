@@ -1,49 +1,52 @@
 import { addTodoRow } from "../components/CreateTodoRow.js";
 
 export function saveTableData(dataArray) {
-    localStorage.setItem('tableData', JSON.stringify(dataArray));
+  localStorage.setItem("tableData", JSON.stringify(dataArray));
 }
 
 export function getTableData() {
-    const storedData = localStorage.getItem('tableData');
-    return storedData ? JSON.parse(storedData) : [];
+  const storedData = localStorage.getItem("tableData");
+  return storedData ? JSON.parse(storedData) : [];
 }
 
 export function deleteRow(rowId) {
-    const tbody = document.getElementById("tbody");
-    const rowToDelete = document.getElementById(rowId)
-    tbody.removeChild(rowToDelete);
+  const tbody = document.getElementById("tbody");
+  const rowToDelete = document.getElementById(rowId);
+  tbody.removeChild(rowToDelete);
 
-    const tableData = getTableData();
-    const data = tableData.filter((row) => row.id !== rowId);
-    saveTableData(data);
+  const tableData = getTableData();
+  const data = tableData.filter((row) => row.id !== rowId);
+  saveTableData(data);
 }
 
 export function changeRowState(note) {
-    const tableData = getTableData();
+  const tableData = getTableData();
 
-    const tbody = document.getElementById("tbody");
-    const rowToDelete = document.getElementById(note.id)
-    tbody.removeChild(rowToDelete);
+  const tbody = document.getElementById("tbody");
+  const rowToDelete = document.getElementById(note.id);
+  tbody.removeChild(rowToDelete);
 
-
-    saveTableData(tableData.map((item) => {
-        if (item.id === note.id) {
-            return { ...item, isArchived: !item.isArchived }
-        }
-        return item;
-    }));
+  saveTableData(
+    tableData.map((item) => {
+      if (item.id === note.id) {
+        return { ...item, isArchived: !item.isArchived };
+      }
+      return item;
+    })
+  );
 }
 
-export function archiveRow(note) { 
-    const tableData = getTableData(); 
-    
-    saveTableData(tableData.map((item) => {
-         if (item.id === note.id) {
-             return {...item, isArchived: !item.isArchived} 
-         }
-         return item
-    })); 
+export function archiveRow(note) {
+  const tableData = getTableData();
+
+  saveTableData(
+    tableData.map((item) => {
+      if (item.id === note.id) {
+        return { ...item, isArchived: !item.isArchived };
+      }
+      return item;
+    })
+  );
 }
 
 export function assignIdNote(note) {
@@ -54,15 +57,19 @@ export function assignIdNote(note) {
 }
 
 export function renderArchived() {
-    const tbody = document.getElementById("tbody");
-    tbody.innerHTML = "";
-    const filteredData = getTableData().filter((note) => note.isArchived);
-    filteredData.forEach((todo) => { addTodoRow(todo, tbody) });
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
+  const filteredData = getTableData().filter((note) => note.isArchived);
+  filteredData.forEach((todo) => {
+    addTodoRow(todo, tbody);
+  });
 }
 
 export function renderUnarchived() {
-    const tbody = document.getElementById("tbody");
-    tbody.innerHTML = "";
-    const filteredData = getTableData().filter((note) => !note.isArchived);
-    filteredData.forEach((todo) => { addTodoRow(todo, tbody) });
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
+  const filteredData = getTableData().filter((note) => !note.isArchived);
+  filteredData.forEach((todo) => {
+    addTodoRow(todo, tbody);
+  });
 }
