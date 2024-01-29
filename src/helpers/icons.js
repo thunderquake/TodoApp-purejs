@@ -18,7 +18,9 @@ export function buttonIconElementRender() {
     deleteIconElement.setAttribute("src", `/src/assets/buttons/delete.svg`);
     deleteIconElement.classList.add("w-6", "h-6");
 
-    const buttonIconElements = [editIconElement, archiveIconElement, deleteIconElement];
-
-    return buttonIconElements;
+    return {
+        editB: editIconElement.outerHTML,
+        archiveB: archiveIconElement.outerHTML,
+        deleteB: deleteIconElement.outerHTML,
+    };
 }
