@@ -26,9 +26,11 @@ export function addTodoRow(obj) {
   contentsTd.textContent = contents;
   tr.appendChild(contentsTd);
 
+  const datesArr = getDate(contents);
+
   const dateTd = document.createElement("td");
   dateTd.classList.add("text-left");
-  dateTd.textContent = getDate(contents);
+  dateTd.textContent = datesArr;
   tr.appendChild(dateTd);
 
   const buttonsCont = addButtonsContainer(obj);
