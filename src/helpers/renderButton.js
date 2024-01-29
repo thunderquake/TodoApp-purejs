@@ -18,24 +18,25 @@ export function addTdButton(value, tr) {
 
 export function addButtonsContainer(obj) {
 
-    const arr = buttonIconElementRender();
+    const {editB, archiveB, deleteB} = buttonIconElementRender();
+
     const container = document.createElement("div");
     container.classList.add("grid", "mx-auto", "grid-cols-3", "p-6", "place-content-center", "w-64");
 
     const editButton = document.createElement("button");
-    editButton.appendChild(arr[0])
+    editButton.innerHTML = editB;
     editButton.classList.add("bg-white/50", "rounded-lg", "w-10", "h-10", "place-content-center", "flex", "p-2")
     container.appendChild(editButton);
 
     const archiveButton = document.createElement("button");
-    archiveButton.appendChild(arr[1])
+    archiveButton.innerHTML = archiveB;
     archiveButton.classList.add("bg-white/50", "rounded-lg", "w-10", "h-10", "place-content-center", "flex", "p-2")
 
     archiveButton.addEventListener('click', () => changeRowState(obj));
     container.appendChild(archiveButton);
 
     const deleteButton = document.createElement("button");
-    deleteButton.appendChild(arr[2])
+    deleteButton.innerHTML = deleteB;
     deleteButton.classList.add("bg-white/50", "rounded-lg", "w-10", "h-10", "place-content-center", "flex", "p-2")
     
     deleteButton.addEventListener('click', () => deleteRow(obj.id));
