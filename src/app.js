@@ -7,6 +7,7 @@ import {
   renderArchived,
   renderUnarchived,
 } from "./helpers/storingData.js";
+import { inputWindow, openModal } from "./components/InputWindow.js";
 
 export function todosPage() {
   const container = document.createElement("div");
@@ -30,8 +31,8 @@ export function todosPage() {
   container.appendChild(todosArchiveButton);
 
   const todosAddButton = renderButton("Add Todo", () => {
-    const createdNote = assignIdNote(todoNote);
-    addTodoRow(createdNote);
+    const modalWindow = inputWindow();
+    openModal(modalWindow);
   });
   todosAddButton.classList.add(
     "text-lg",
