@@ -25,7 +25,7 @@ export function inputModal() {
   const allDiv = document.createElement("div");
   allDiv.classList.add(
     "relative",
-    "p-4",
+    "p-8",
     "w-full",
     "max-w-md",
     "max-h-full",
@@ -58,7 +58,7 @@ export function inputModal() {
 
   const title = document.createElement("p");
   title.innerText = "Input todo details here";
-  title.classList.add("text-lg", "font-semibold", "text-stone-900", "pr-4");
+  title.classList.add("text-xl", "font-semibold", "text-stone-900", "pr-4");
   textDiv.appendChild(title);
 
   const closeButton = document.createElement("button");
@@ -109,7 +109,7 @@ function categorySelect() {
   categoryLabel.classList.add(
     "block",
     "mb-2",
-    "text-sm",
+    "text-lg",
     "font-medium",
     "text-stone-900"
   );
@@ -123,7 +123,7 @@ function categorySelect() {
     "border",
     "border-stone-300",
     "text-stone-900",
-    "text-sm",
+    "text-lg",
     "rounded-lg",
     "focus:ring-primary-500",
     "focus:border-primary-500",
@@ -154,7 +154,7 @@ function nameInput() {
   nameLabel.classList.add(
     "block",
     "mb-2",
-    "text-sm",
+    "text-lg",
     "font-medium",
     "text-stone-900"
   );
@@ -172,7 +172,7 @@ function nameInput() {
     "border",
     "border-stone-300",
     "text-stone-900",
-    "text-sm",
+    "text-lg",
     "rounded-lg",
     "focus:ring-primary-600",
     "focus:border-primary-600",
@@ -194,7 +194,7 @@ function contentsInput() {
   contentsLabel.classList.add(
     "block",
     "mb-2",
-    "text-sm",
+    "text-lg",
     "font-medium",
     "text-stone-900"
   );
@@ -211,7 +211,7 @@ function contentsInput() {
     "block",
     "p-2.5",
     "w-full",
-    "text-sm",
+    "text-lg",
     "text-stone-900",
     "bg-stone-50",
     "rounded-lg",
@@ -238,7 +238,7 @@ function submitButton() {
     "focus:ring-stone-300",
     "font-medium",
     "rounded-lg",
-    "text-sm",
+    "text-lg",
     "px-3",
     "py-2.5",
     "text-center"
