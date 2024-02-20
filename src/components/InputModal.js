@@ -1,3 +1,5 @@
+import { addTodo } from "../helpers/addTodo.js";
+import { getDate } from "../helpers/getDate.js";
 import { renderButton } from "../helpers/renderButton.js";
 import { createCont } from "./Containers.js";
 
@@ -218,7 +220,9 @@ function contentsInput() {
     "border",
     "border-stone-300",
     "focus:ring-blue-500",
-    "focus:border-blue-500"
+    "focus:border-blue-500",
+    "max-h-32",
+    "overflow-scroll"
   );
   contentsDiv.appendChild(contentsInput);
 
@@ -244,8 +248,35 @@ function submitButton() {
     "text-center"
   );
   button.textContent = "+ Add todo";
+  button.addEventListener("click", () => {
+    const nameInput = document.getElementById("name").value;
+    const contentsInput = document.getElementById("contents").value;
+    const categorySelect = document.getElementById("categories");
+    const category = categorySelect.value;
+
+    const todoNote = {
+      category: category,
+      name: nameInput,
+      contents: contentsInput,
+      dateCreated: getCurrentDate(),
+      isArchived: false,
+    };
+
+    addTodo(todoNote);
+
+    const inputModal = document.getElementById("input-modal");
+    const overlay = document.getElementById("overlay");
+
+    inputModal.classList.add("hidden");
+    overlay.classList.add("hidden");
+  });
 
   return button;
+}
+
+export function getCurrentDate() {
+  const currentDate = new Date();
+  return currentDate.toLocaleDateString("en-GB");
 }
 
 export function openModal(window, overlay) {
