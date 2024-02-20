@@ -7,7 +7,7 @@ import {
   renderArchived,
   renderUnarchived,
 } from "./helpers/storingData.js";
-import { inputWindow, openModal } from "./components/InputWindow.js";
+import { inputModal, openModal } from "./components/inputModal.js";
 
 export function todosPage() {
   const container = document.createElement("div");
@@ -31,8 +31,21 @@ export function todosPage() {
   container.appendChild(todosArchiveButton);
 
   const todosAddButton = renderButton("Add Todo", () => {
-    const modalWindow = inputWindow();
-    openModal(modalWindow);
+    const overlay = document.createElement("div");
+    overlay.classList.add(
+      "fixed",
+      "top-0",
+      "left-0",
+      "w-full",
+      "h-full",
+      "bg-stone-500",
+      "opacity-50",
+      "z-50",
+      "hidden"
+    );
+    document.body.appendChild(overlay);
+    const modalWindow = inputModal();
+    openModal(modalWindow, overlay);
   });
   todosAddButton.classList.add(
     "text-lg",
@@ -42,6 +55,8 @@ export function todosPage() {
     "font-bold"
   );
   todosAddButton.classList.add("overflow-hidden", "shadow-lg");
+  todosAddButton.setAttribute("data-modal-target", "input-modal");
+  todosAddButton.setAttribute("data-modal-toggle", "input-modal");
   container.appendChild(todosAddButton);
 
   const todosUnarchiveButton = renderButton("View Current", () => {
