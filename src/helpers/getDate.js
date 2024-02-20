@@ -17,3 +17,8 @@ export function getDate(noteContent) {
 
   return dates.join(", ");
 }
+
+export function getCurrentDate() {
+  const currentDate = new Date();
+  return currentDate.toLocaleDateString("en-GB");
+}
