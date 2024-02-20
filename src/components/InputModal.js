@@ -57,7 +57,7 @@ export function inputModal() {
   headerDiv.appendChild(textDiv);
 
   const title = document.createElement("p");
-  title.innerText = "input todo details here";
+  title.innerText = "Input todo details here";
   title.classList.add("text-lg", "font-semibold", "text-stone-900", "pr-4");
   textDiv.appendChild(title);
 
@@ -93,6 +93,9 @@ export function inputModal() {
   const contentsDiv = contentsInput();
   contentsDiv.classList.add("col-span-2");
   bodyDiv.appendChild(contentsDiv);
+
+  const button = submitButton();
+  bodyDiv.appendChild(button);
 
   return inputModal;
 }
@@ -220,6 +223,29 @@ function contentsInput() {
   contentsDiv.appendChild(contentsInput);
 
   return contentsDiv;
+}
+
+function submitButton() {
+  const button = document.createElement("button");
+  button.setAttribute("type", "submit");
+  button.classList.add(
+    "text-stone-50",
+    "inline-flex",
+    "bg-stone-700",
+    "hover:bg-stone-800",
+    "focus:ring-4",
+    "focus:outline-none",
+    "focus:ring-stone-300",
+    "font-medium",
+    "rounded-lg",
+    "text-sm",
+    "px-3",
+    "py-2.5",
+    "text-center"
+  );
+  button.textContent = "+ Add todo";
+
+  return button;
 }
 
 export function openModal(window, overlay) {
