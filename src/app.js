@@ -43,6 +43,7 @@ export function todosPage() {
       "z-50",
       "hidden"
     );
+    overlay.setAttribute("id", "overlay");
     document.body.appendChild(overlay);
     const modalWindow = inputModal();
     openModal(modalWindow, overlay);
