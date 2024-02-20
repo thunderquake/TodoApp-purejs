@@ -140,6 +140,12 @@ function closeModal() {
   const inputModal = document.getElementById("input-modal");
   const overlay = document.getElementById("overlay");
 
+  const nameInput = document.getElementById("name").value;
+  const contentsInput = document.getElementById("contents").value;
+
+  nameInput.value = "";
+  contentsInput.value = "";
+
   inputModal.classList.add("hidden");
   overlay.classList.add("hidden");
 }
