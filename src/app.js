@@ -45,8 +45,8 @@ export function todosPage() {
     );
     overlay.setAttribute("id", "overlay");
     document.body.appendChild(overlay);
-    const modalWindow = inputModal();
-    openModal(modalWindow, overlay);
+    inputModal();
+    openModal();
   });
   todosAddButton.classList.add(
     "text-lg",

@@ -21,7 +21,6 @@ export function inputModal() {
     "items-center"
   );
   inputModal.setAttribute("id", "input-modal");
-  inputModal.setAttribute("data-modal-backdrop", "static");
   document.body.appendChild(inputModal);
 
   const allDiv = document.createElement("div");
@@ -98,6 +97,29 @@ export function inputModal() {
 
   const button = submitButton();
   bodyDiv.appendChild(button);
+
+  form.addEventListener("submit", () => {
+    const nameInput = document.getElementById("name").value;
+    const contentsInput = document.getElementById("contents").value;
+    const categorySelect = document.getElementById("categories");
+    const category = categorySelect.value;
+
+    const todoNote = {
+      category: category,
+      name: nameInput,
+      contents: contentsInput,
+      dateCreated: getCurrentDate(),
+      isArchived: false,
+    };
+
+    addTodo(todoNote);
+
+    closeModal();
+  });
+
+  closeButton.addEventListener("click", () => {
+    closeModal();
+  });
 
   return inputModal;
 }
@@ -206,7 +228,6 @@ function contentsInput() {
   contentsInput.setAttribute("rows", "4");
   contentsInput.setAttribute("name", "contents");
   contentsInput.setAttribute("id", "contents");
-  contentsInput.setAttribute("required", "");
   contentsInput.setAttribute("placeholder", "Describe your todo");
 
   contentsInput.classList.add(
@@ -248,28 +269,6 @@ function submitButton() {
     "text-center"
   );
   button.textContent = "+ Add todo";
-  button.addEventListener("click", () => {
-    const nameInput = document.getElementById("name").value;
-    const contentsInput = document.getElementById("contents").value;
-    const categorySelect = document.getElementById("categories");
-    const category = categorySelect.value;
-
-    const todoNote = {
-      category: category,
-      name: nameInput,
-      contents: contentsInput,
-      dateCreated: getCurrentDate(),
-      isArchived: false,
-    };
-
-    addTodo(todoNote);
-
-    const inputModal = document.getElementById("input-modal");
-    const overlay = document.getElementById("overlay");
-
-    inputModal.classList.add("hidden");
-    overlay.classList.add("hidden");
-  });
 
   return button;
 }
@@ -279,7 +278,18 @@ export function getCurrentDate() {
   return currentDate.toLocaleDateString("en-GB");
 }
 
-export function openModal(window, overlay) {
-  window.classList.remove("hidden");
+export function openModal() {
+  const inputModal = document.getElementById("input-modal");
+  const overlay = document.getElementById("overlay");
+
+  inputModal.classList.remove("hidden");
   overlay.classList.remove("hidden");
+}
+
+function closeModal() {
+  const inputModal = document.getElementById("input-modal");
+  const overlay = document.getElementById("overlay");
+
+  inputModal.classList.add("hidden");
+  overlay.classList.add("hidden");
 }
