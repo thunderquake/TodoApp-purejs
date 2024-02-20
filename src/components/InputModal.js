@@ -79,6 +79,7 @@ export function inputModal() {
     "rounded-md"
   );
   closeButton.textContent = "⨉";
+  closeButton.setAttribute("type", "reset");
   headerDiv.appendChild(closeButton);
 
   const bodyDiv = document.createElement("div");
@@ -143,8 +144,10 @@ function closeModal() {
   const nameInput = document.getElementById("name").value;
   const contentsInput = document.getElementById("contents").value;
 
-  nameInput.value = "";
-  contentsInput.value = "";
+  if (nameInput && contentsInput) {
+    nameInput.value = "";
+    contentsInput.value = "";
+  }
 
   inputModal.classList.add("hidden");
   overlay.classList.add("hidden");
