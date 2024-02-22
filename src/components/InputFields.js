@@ -146,3 +146,40 @@ export function submitButton() {
 
   return button;
 }
+
+export function archivedCheckbox() {
+  const isArchivedDiv = document.createElement("div");
+
+  const label = document.createElement("label");
+  label.setAttribute("for", "isArchived");
+  label.textContent = "Archived?";
+  label.classList.add(
+    "block",
+    "mb-2",
+    "text-lg",
+    "font-medium",
+    "text-stone-900"
+  );
+  isArchivedDiv.appendChild(label);
+
+  const checkbox = document.createElement("input");
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.setAttribute("value", "");
+  checkbox.setAttribute("id", "isArchived");
+  checkbox.setAttribute("name", "isArchived");
+
+  checkbox.classList.add(
+    "w-4",
+    "h-4",
+    "border",
+    "border-stone-300",
+    "rounded",
+    "bg-stone-50",
+    "focus:ring-3",
+    "focus:ring-stone-300"
+  );
+
+  isArchivedDiv.appendChild(label);
+
+  return isArchivedDiv;
+}
