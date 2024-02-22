@@ -1,5 +1,7 @@
 import { changeRowState, deleteRow } from "./storingData.js";
 import { buttonIconElementRender } from "../components/IconsButton.js";
+import { editModal, openEditModal } from "../components/EditModal.js";
+import { overlay } from "../components/InputFields.js";
 
 export function renderButton(text, funct) {
   const button = document.createElement("button");
@@ -41,6 +43,9 @@ export function addButtonsContainer(obj) {
     "p-2"
   );
   container.appendChild(editButton);
+  overlay();
+  editModal();
+  editButton.addEventListener("click", () => openEditModal());
 
   const archiveButton = document.createElement("button");
   archiveButton.innerHTML = archiveB;

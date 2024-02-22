@@ -3,6 +3,7 @@ import {
   nameInput,
   contentsInput,
   archivedCheckbox,
+  submitButton,
 } from "./InputFields.js";
 
 export function editModal() {
@@ -22,7 +23,7 @@ export function editModal() {
     "justify-center",
     "items-center"
   );
-  editModal.setAttribute("id", "input-modal");
+  editModal.setAttribute("id", "edit-modal");
   document.body.appendChild(editModal);
 
   const allDiv = document.createElement("div");
@@ -40,7 +41,7 @@ export function editModal() {
   const form = document.createElement("form");
   form.appendChild(allDiv);
   form.classList.add("p-4", "md:p-5");
-  inputModal.appendChild(form);
+  editModal.appendChild(form);
 
   const headerDiv = document.createElement("div");
   headerDiv.classList.add(
@@ -100,5 +101,34 @@ export function editModal() {
   isArchivedDiv.classList.add("col-span-2");
   bodyDiv.appendChild(isArchivedDiv);
 
+  const button = submitButton("+ Save todo");
+  bodyDiv.appendChild(button);
+
+  document.body.appendChild(editModal);
+
   return editModal;
+}
+
+export function openEditModal() {
+  const editModal = document.getElementById("edit-modal");
+  const overlay = document.getElementById("overlay");
+
+  editModal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+}
+
+function closeEditModal() {
+  const editModal = document.getElementById("edit-modal");
+  const overlay = document.getElementById("overlay");
+
+  const nameInput = document.getElementById("name").value;
+  const contentsInput = document.getElementById("contents").value;
+
+  if (nameInput && contentsInput) {
+    nameInput.value = "";
+    contentsInput.value = "";
+  }
+
+  editModal.classList.add("hidden");
+  overlay.classList.add("hidden");
 }

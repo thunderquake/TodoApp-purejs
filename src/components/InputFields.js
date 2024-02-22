@@ -124,7 +124,7 @@ export function contentsInput() {
   return contentsDiv;
 }
 
-export function submitButton() {
+export function submitButton(text) {
   const button = document.createElement("button");
   button.setAttribute("type", "submit");
   button.classList.add(
@@ -142,7 +142,7 @@ export function submitButton() {
     "py-2.5",
     "text-center"
   );
-  button.textContent = "+ Add todo";
+  button.textContent = text;
 
   return button;
 }
@@ -179,7 +179,25 @@ export function archivedCheckbox() {
     "focus:ring-stone-300"
   );
 
-  isArchivedDiv.appendChild(label);
+  isArchivedDiv.appendChild(checkbox);
 
   return isArchivedDiv;
+}
+
+export function overlay() {
+  const overlay = document.createElement("div");
+  overlay.classList.add(
+    "fixed",
+    "top-0",
+    "left-0",
+    "w-full",
+    "h-full",
+    "bg-stone-500",
+    "opacity-50",
+    "z-50",
+    "hidden"
+  );
+  overlay.setAttribute("id", "overlay");
+  document.body.appendChild(overlay);
+  return overlay;
 }
