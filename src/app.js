@@ -1,12 +1,6 @@
-import { addTodoRow } from "./components/CreateTodoRow.js";
-import { todoNote } from "./helpers/notes.js";
 import { renderButton } from "./helpers/renderButton.js";
 import { createThreeColumn } from "./components/Containers.js";
-import {
-  assignIdNote,
-  renderArchived,
-  renderUnarchived,
-} from "./helpers/storingData.js";
+import { renderArchived, renderUnarchived } from "./helpers/storingData.js";
 import { inputModal, openModal } from "./components/inputModal.js";
 
 export function todosPage() {

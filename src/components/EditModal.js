@@ -1,15 +1,13 @@
-import { addTodo } from "../helpers/addTodo.js";
 import {
   categorySelect,
   nameInput,
   contentsInput,
-  submitButton,
+  archivedCheckbox,
 } from "./InputFields.js";
-import { getCurrentDate } from "../helpers/getDate.js";
 
-export function inputModal() {
-  const inputModal = document.createElement("section");
-  inputModal.classList.add(
+export function editModal() {
+  const editModal = document.createElement("section");
+  editModal.classList.add(
     "modal",
     "hidden",
     "overflow-y-auto",
@@ -24,8 +22,8 @@ export function inputModal() {
     "justify-center",
     "items-center"
   );
-  inputModal.setAttribute("id", "input-modal");
-  document.body.appendChild(inputModal);
+  editModal.setAttribute("id", "input-modal");
+  document.body.appendChild(editModal);
 
   const allDiv = document.createElement("div");
   allDiv.classList.add(
@@ -62,7 +60,7 @@ export function inputModal() {
   headerDiv.appendChild(textDiv);
 
   const title = document.createElement("p");
-  title.innerText = "Input todo details here";
+  title.innerText = "Edit todo details";
   title.classList.add("text-xl", "font-semibold", "text-stone-900", "pr-4");
   textDiv.appendChild(title);
 
@@ -98,55 +96,9 @@ export function inputModal() {
   contentsDiv.classList.add("col-span-2");
   bodyDiv.appendChild(contentsDiv);
 
-  const button = submitButton();
-  bodyDiv.appendChild(button);
+  const isArchivedDiv = archivedCheckbox();
+  isArchivedDiv.classList.add("col-span-2");
+  bodyDiv.appendChild(isArchivedDiv);
 
-  form.addEventListener("submit", () => {
-    const nameInput = document.getElementById("name").value;
-    const contentsInput = document.getElementById("contents").value;
-    const categorySelect = document.getElementById("categories");
-    const category = categorySelect.value;
-
-    const todoNote = {
-      category: category,
-      name: nameInput,
-      contents: contentsInput,
-      dateCreated: getCurrentDate(),
-      isArchived: false,
-    };
-
-    addTodo(todoNote);
-
-    closeModal();
-  });
-
-  closeButton.addEventListener("click", () => {
-    closeModal();
-  });
-
-  return inputModal;
-}
-
-export function openModal() {
-  const inputModal = document.getElementById("input-modal");
-  const overlay = document.getElementById("overlay");
-
-  inputModal.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-}
-
-function closeModal() {
-  const inputModal = document.getElementById("input-modal");
-  const overlay = document.getElementById("overlay");
-
-  const nameInput = document.getElementById("name").value;
-  const contentsInput = document.getElementById("contents").value;
-
-  if (nameInput && contentsInput) {
-    nameInput.value = "";
-    contentsInput.value = "";
-  }
-
-  inputModal.classList.add("hidden");
-  overlay.classList.add("hidden");
+  return editModal;
 }
