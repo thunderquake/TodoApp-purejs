@@ -1,7 +1,8 @@
 import { renderButton } from "./helpers/renderButton.js";
 import { createThreeColumn } from "./components/Containers.js";
 import { renderArchived, renderUnarchived } from "./helpers/storingData.js";
-import { inputModal, openModal } from "./components/inputModal.js";
+import { inputModal, openInputModal } from "./components/inputModal.js";
+import { overlay } from "./components/InputFields.js";
 
 export function todosPage() {
   const container = document.createElement("div");
@@ -25,22 +26,9 @@ export function todosPage() {
   container.appendChild(todosArchiveButton);
 
   const todosAddButton = renderButton("Add Todo", () => {
-    const overlay = document.createElement("div");
-    overlay.classList.add(
-      "fixed",
-      "top-0",
-      "left-0",
-      "w-full",
-      "h-full",
-      "bg-stone-500",
-      "opacity-50",
-      "z-50",
-      "hidden"
-    );
-    overlay.setAttribute("id", "overlay");
-    document.body.appendChild(overlay);
+    overlay();
     inputModal();
-    openModal();
+    openInputModal();
   });
   todosAddButton.classList.add(
     "text-lg",

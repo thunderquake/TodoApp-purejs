@@ -25,7 +25,6 @@ export function inputModal() {
     "items-center"
   );
   inputModal.setAttribute("id", "input-modal");
-  document.body.appendChild(inputModal);
 
   const allDiv = document.createElement("div");
   allDiv.classList.add(
@@ -98,8 +97,10 @@ export function inputModal() {
   contentsDiv.classList.add("col-span-2");
   bodyDiv.appendChild(contentsDiv);
 
-  const button = submitButton();
+  const button = submitButton("+ Add todo");
   bodyDiv.appendChild(button);
+
+  document.body.appendChild(inputModal);
 
   form.addEventListener("submit", () => {
     const nameInput = document.getElementById("name").value;
@@ -117,17 +118,17 @@ export function inputModal() {
 
     addTodo(todoNote);
 
-    closeModal();
+    closeInputModal();
   });
 
   closeButton.addEventListener("click", () => {
-    closeModal();
+    closeInputModal();
   });
 
   return inputModal;
 }
 
-export function openModal() {
+export function openInputModal() {
   const inputModal = document.getElementById("input-modal");
   const overlay = document.getElementById("overlay");
 
@@ -135,7 +136,7 @@ export function openModal() {
   overlay.classList.remove("hidden");
 }
 
-function closeModal() {
+function closeInputModal() {
   const inputModal = document.getElementById("input-modal");
   const overlay = document.getElementById("overlay");
 
