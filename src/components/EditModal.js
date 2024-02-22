@@ -106,6 +106,10 @@ export function editModal() {
 
   document.body.appendChild(editModal);
 
+  closeButton.addEventListener("click", () => {
+    closeEditModal();
+  });
+
   return editModal;
 }
 
