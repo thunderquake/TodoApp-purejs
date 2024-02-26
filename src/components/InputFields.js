@@ -1,3 +1,5 @@
+import { CATEGORIES } from "../constants/constants.js";
+
 export function categorySelect(id) {
   const categoryDiv = document.createElement("div");
 
@@ -31,9 +33,7 @@ export function categorySelect(id) {
   );
   categoryDiv.appendChild(categoryButton);
 
-  const categories = ["idea", "quote", "task", "thoughts"];
-
-  categories.forEach((category) => {
+  CATEGORIES.forEach((category) => {
     const option = document.createElement("option");
     option.textContent = category;
     option.setAttribute("value", category);
