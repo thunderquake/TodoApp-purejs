@@ -1,8 +1,8 @@
-export function categorySelect() {
+export function categorySelect(id) {
   const categoryDiv = document.createElement("div");
 
   const categoryLabel = document.createElement("label");
-  categoryLabel.setAttribute("for", "categories");
+  categoryLabel.setAttribute("for", id);
   categoryLabel.textContent = "Category:";
   categoryLabel.classList.add(
     "block",
@@ -14,8 +14,8 @@ export function categorySelect() {
   categoryDiv.appendChild(categoryLabel);
 
   const categoryButton = document.createElement("select");
-  categoryButton.setAttribute("name", "categories");
-  categoryButton.setAttribute("id", "categories");
+  categoryButton.setAttribute("name", id);
+  categoryButton.setAttribute("id", id);
   categoryButton.classList.add(
     "bg-stone-50",
     "border",
@@ -43,11 +43,11 @@ export function categorySelect() {
   return categoryDiv;
 }
 
-export function nameInput() {
+export function nameInput(id) {
   const nameDiv = document.createElement("div");
 
   const nameLabel = document.createElement("label");
-  nameLabel.setAttribute("for", "name");
+  nameLabel.setAttribute("for", id);
   nameLabel.textContent = "Name";
   nameLabel.classList.add(
     "block",
@@ -60,10 +60,11 @@ export function nameInput() {
 
   const nameInput = document.createElement("input");
   nameInput.setAttribute("type", "text");
-  nameInput.setAttribute("name", "name");
-  nameInput.setAttribute("id", "name");
+  nameInput.setAttribute("name", id);
+  nameInput.setAttribute("id", id);
   nameInput.setAttribute("required", "");
   nameInput.setAttribute("placeholder", "Todo name");
+  nameInput.setAttribute("maxlength", "50");
 
   nameInput.classList.add(
     "bg-stone-50",
@@ -83,11 +84,11 @@ export function nameInput() {
   return nameDiv;
 }
 
-export function contentsInput() {
+export function contentsInput(id) {
   const contentsDiv = document.createElement("div");
 
   const contentsLabel = document.createElement("label");
-  contentsLabel.setAttribute("for", "contents");
+  contentsLabel.setAttribute("for", id);
   contentsLabel.textContent = "Contents";
   contentsLabel.classList.add(
     "block",
@@ -100,9 +101,10 @@ export function contentsInput() {
 
   const contentsInput = document.createElement("textarea");
   contentsInput.setAttribute("rows", "4");
-  contentsInput.setAttribute("name", "contents");
-  contentsInput.setAttribute("id", "contents");
+  contentsInput.setAttribute("name", id);
+  contentsInput.setAttribute("id", id);
   contentsInput.setAttribute("placeholder", "Describe your todo");
+  contentsInput.setAttribute("maxlength", "500");
 
   contentsInput.classList.add(
     "block",

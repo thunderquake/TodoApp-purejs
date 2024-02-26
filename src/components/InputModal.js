@@ -85,15 +85,15 @@ export function inputModal() {
   bodyDiv.classList.add("grid", "gap-4", "mb-4", "grid-cols-2", "pt-4");
   allDiv.appendChild(bodyDiv);
 
-  const categoryDiv = categorySelect();
+  const categoryDiv = categorySelect("inputCategory");
   categoryDiv.classList.add("col-span-2", "sm:col-span-1");
   bodyDiv.appendChild(categoryDiv);
 
-  const nameDiv = nameInput();
+  const nameDiv = nameInput("inputName");
   nameDiv.classList.add("col-span-2");
   bodyDiv.appendChild(nameDiv);
 
-  const contentsDiv = contentsInput();
+  const contentsDiv = contentsInput("inputContents");
   contentsDiv.classList.add("col-span-2");
   bodyDiv.appendChild(contentsDiv);
 
@@ -103,9 +103,9 @@ export function inputModal() {
   document.body.appendChild(inputModal);
 
   form.addEventListener("submit", () => {
-    const nameInput = document.getElementById("name").value;
-    const contentsInput = document.getElementById("contents").value;
-    const categorySelect = document.getElementById("categories");
+    const nameInput = document.getElementById("inputName").value;
+    const contentsInput = document.getElementById("inputContents").value;
+    const categorySelect = document.getElementById("inputCategory");
     const category = categorySelect.value;
 
     const todoNote = {
@@ -140,8 +140,8 @@ function closeInputModal() {
   const inputModal = document.getElementById("input-modal");
   const overlay = document.getElementById("overlay");
 
-  const nameInput = document.getElementById("name").value;
-  const contentsInput = document.getElementById("contents").value;
+  const nameInput = document.getElementById("inputName").value;
+  const contentsInput = document.getElementById("inputContents").value;
 
   if (nameInput && contentsInput) {
     nameInput.value = "";

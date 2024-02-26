@@ -11,7 +11,7 @@ import { saveTableData } from "../helpers/storingData.js";
 
 function closeEditModal() {
   const nameInputField = document.getElementById("name");
-  const contentsInputField = document.getElementById("contents");
+  const contentsInputField = document.getElementById("editContents");
   const editModal = document.getElementById("edit-modal");
   const overlay = document.getElementById("overlay");
 
@@ -105,15 +105,15 @@ export function editModal() {
   bodyDiv.classList.add("grid", "gap-4", "mb-4", "grid-cols-2", "pt-4");
   allDiv.appendChild(bodyDiv);
 
-  const categoryDiv = categorySelect();
+  const categoryDiv = categorySelect("editCategory");
   categoryDiv.classList.add("col-span-2", "sm:col-span-1");
   bodyDiv.appendChild(categoryDiv);
 
-  const nameDiv = nameInput();
+  const nameDiv = nameInput("editName");
   nameDiv.classList.add("col-span-2");
   bodyDiv.appendChild(nameDiv);
 
-  const contentsDiv = contentsInput();
+  const contentsDiv = contentsInput("editContents");
   contentsDiv.classList.add("col-span-2");
   bodyDiv.appendChild(contentsDiv);
 
@@ -147,9 +147,9 @@ export function openEditModal(obj) {
     const rowToDelete = document.getElementById(obj.id);
     tbody.removeChild(rowToDelete);
 
-    const nameValue = document.getElementById("name").value;
-    const contentsValue = document.getElementById("contents").value;
-    const categoryValue = document.getElementById("categories").value;
+    const nameValue = document.getElementById("editName").value;
+    const contentsValue = document.getElementById("editContents").value;
+    const categoryValue = document.getElementById("editCategory").value;
     const isArchivedValue = document.getElementById("isArchived").checked;
 
     saveTableData(
@@ -167,17 +167,17 @@ export function openEditModal(obj) {
     );
   });
 
-  const nameInputField = document.getElementById("name");
+  const nameInputField = document.getElementById("editName");
   if (obj && obj.name) {
     nameInputField.value = obj.name;
   }
 
-  const contentsInputField = document.getElementById("contents");
+  const contentsInputField = document.getElementById("editContents");
   if (obj && obj.contents) {
     contentsInputField.value = obj.contents;
   }
 
-  const categoriesInputField = document.getElementById("categories");
+  const categoriesInputField = document.getElementById("editCategory");
   if (obj && obj.category) {
     categoriesInputField.value = obj.category;
   }
