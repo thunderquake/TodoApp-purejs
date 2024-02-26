@@ -1,3 +1,5 @@
+import { getTableData } from "../helpers/storingData.js";
+import { addTodoRow } from "./CreateTodoRow.js";
 import {
   categorySelect,
   nameInput,
@@ -5,6 +7,24 @@ import {
   archivedCheckbox,
   submitButton,
 } from "./InputFields.js";
+import { saveTableData } from "../helpers/storingData.js";
+
+function closeEditModal() {
+  const nameInputField = document.getElementById("name");
+  const contentsInputField = document.getElementById("contents");
+  const editModal = document.getElementById("edit-modal");
+  const overlay = document.getElementById("overlay");
+
+  if (nameInputField) {
+    nameInputField.value = "";
+  }
+  if (contentsInputField) {
+    contentsInputField.value = "";
+  }
+
+  editModal.classList.add("hidden");
+  overlay.classList.add("hidden");
+}
 
 export function editModal() {
   const editModal = document.createElement("section");
@@ -102,6 +122,8 @@ export function editModal() {
   bodyDiv.appendChild(isArchivedDiv);
 
   const button = submitButton("+ Save todo");
+  button.setAttribute("id", "editButton");
+
   bodyDiv.appendChild(button);
 
   document.body.appendChild(editModal);
@@ -113,26 +135,57 @@ export function editModal() {
   return editModal;
 }
 
-export function openEditModal() {
+export function openEditModal(obj) {
   const editModal = document.getElementById("edit-modal");
   const overlay = document.getElementById("overlay");
+  const submitButton = document.getElementById("editButton");
 
-  editModal.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-}
+  submitButton.addEventListener("click", () => {
+    const tableData = getTableData();
 
-function closeEditModal() {
-  const editModal = document.getElementById("edit-modal");
-  const overlay = document.getElementById("overlay");
+    const tbody = document.getElementById("tbody");
+    const rowToDelete = document.getElementById(obj.id);
+    tbody.removeChild(rowToDelete);
 
-  const nameInput = document.getElementById("name").value;
-  const contentsInput = document.getElementById("contents").value;
+    const nameValue = document.getElementById("name").value;
+    const contentsValue = document.getElementById("contents").value;
+    const categoryValue = document.getElementById("categories").value;
+    const isArchivedValue = document.getElementById("isArchived").checked;
 
-  if (nameInput && contentsInput) {
-    nameInput.value = "";
-    contentsInput.value = "";
+    saveTableData(
+      tableData.map((item) =>
+        item.id === obj.id
+          ? {
+              ...item,
+              name: nameValue,
+              contents: contentsValue,
+              category: categoryValue,
+              isArchived: isArchivedValue,
+            }
+          : item
+      )
+    );
+  });
+
+  const nameInputField = document.getElementById("name");
+  if (obj && obj.name) {
+    nameInputField.value = obj.name;
   }
 
-  editModal.classList.add("hidden");
-  overlay.classList.add("hidden");
+  const contentsInputField = document.getElementById("contents");
+  if (obj && obj.contents) {
+    contentsInputField.value = obj.contents;
+  }
+
+  const categoriesInputField = document.getElementById("categories");
+  if (obj && obj.category) {
+    categoriesInputField.value = obj.category;
+  }
+
+  const isArchivedInputField = document.getElementById("isArchived");
+  if (obj && obj.isArchived) {
+    isArchivedInputField.checked = obj.isArchived;
+  }
+  editModal.classList.remove("hidden");
+  overlay.classList.remove("hidden");
 }
