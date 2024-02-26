@@ -40,6 +40,7 @@ export function inputModal() {
 
   const form = document.createElement("form");
   form.appendChild(allDiv);
+  form.setAttribute("id", "inputForm");
   form.classList.add("p-4", "md:p-5");
   inputModal.appendChild(form);
 
@@ -140,13 +141,7 @@ function closeInputModal() {
   const inputModal = document.getElementById("input-modal");
   const overlay = document.getElementById("overlay");
 
-  const nameInput = document.getElementById("inputName").value;
-  const contentsInput = document.getElementById("inputContents").value;
-
-  if (nameInput && contentsInput) {
-    nameInput.value = "";
-    contentsInput.value = "";
-  }
+  document.getElementById("inputForm").reset();
 
   inputModal.classList.add("hidden");
   overlay.classList.add("hidden");
