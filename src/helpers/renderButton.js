@@ -43,9 +43,7 @@ export function addButtonsContainer(obj) {
     "p-2"
   );
   container.appendChild(editButton);
-  overlay();
-  editModal();
-  editButton.addEventListener("click", () => openEditModal());
+  editButton.addEventListener("click", () => openEditModal(obj));
 
   const archiveButton = document.createElement("button");
   archiveButton.innerHTML = archiveB;

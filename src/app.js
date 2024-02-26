@@ -3,6 +3,7 @@ import { createThreeColumn } from "./components/Containers.js";
 import { renderArchived, renderUnarchived } from "./helpers/storingData.js";
 import { inputModal, openInputModal } from "./components/inputModal.js";
 import { overlay } from "./components/InputFields.js";
+import { editModal } from "./components/EditModal.js";
 
 export function todosPage() {
   const container = document.createElement("div");
@@ -61,6 +62,9 @@ export function todosPage() {
     todosUnarchiveButton
   );
   container.appendChild(buttons);
+
+  overlay();
+  editModal();
 
   return container;
 }
