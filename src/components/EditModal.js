@@ -10,17 +10,10 @@ import {
 import { saveTableData } from "../helpers/storingData.js";
 
 function closeEditModal() {
-  const nameInputField = document.getElementById("name");
-  const contentsInputField = document.getElementById("editContents");
   const editModal = document.getElementById("edit-modal");
   const overlay = document.getElementById("overlay");
 
-  if (nameInputField) {
-    nameInputField.value = "";
-  }
-  if (contentsInputField) {
-    contentsInputField.value = "";
-  }
+  document.getElementById("inputForm").reset();
 
   editModal.classList.add("hidden");
   overlay.classList.add("hidden");
