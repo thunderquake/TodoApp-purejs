@@ -1,5 +1,5 @@
 import { addTodoRow } from "../components/CreateTodoRow.js";
-import { refreshStats } from "../components/StatisticsTable.js";
+import { refreshStats } from "./manageStats.js";
 
 export function saveTableData(dataArray) {
   localStorage.setItem("tableData", JSON.stringify(dataArray));

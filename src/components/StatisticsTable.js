@@ -1,7 +1,6 @@
 import { CATEGORIES } from "../constants/constants.js";
-import { getTableData } from "../helpers/storingData.js";
 import { createCont } from "./Containers.js";
-import { iconElementRender } from "./IconsButton.js";
+import { CreateStatsRow } from "./CreateStatsRow.js";
 
 export function statsTable() {
   const table = document.createElement("table");
@@ -47,63 +46,4 @@ export function statsTable() {
   });
 
   return container;
-}
-
-export function CreateStatsRow(category) {
-  const tr = document.createElement("tr");
-  tr.classList.add(
-    "rounded-3xl",
-    "bg-white/50",
-    "hover:bg-stone-50/70",
-    "break-words"
-  );
-  tr.setAttribute("id", "stats-tr");
-
-  const iconTd = document.createElement("td");
-  const iconElement = iconElementRender(category);
-  iconElement.classList.add("w-20", "mx-auto");
-  iconTd.appendChild(iconElement);
-  tr.appendChild(iconTd);
-
-  const categoryTd = document.createElement("td");
-  categoryTd.textContent = category;
-  categoryTd.classList.add(
-    "text-left",
-    "pr-8",
-    "max-w-40",
-    "text-pretty",
-    "py-4"
-  );
-  tr.appendChild(categoryTd);
-
-  const notArchivedTd = document.createElement("td");
-  notArchivedTd.textContent = howMany(false, category);
-  tr.appendChild(notArchivedTd);
-
-  const archivedTd = document.createElement("td");
-  archivedTd.textContent = howMany(true, category);
-  tr.appendChild(archivedTd);
-
-  return tr;
-}
-
-export function howMany(isArchivedValue, category) {
-  const allTodos = getTableData();
-  return allTodos.reduce((counter, obj) => {
-    if (obj.category === category && obj.isArchived === isArchivedValue) {
-      counter += 1;
-    }
-    return counter;
-  }, 0);
-}
-
-export function refreshStats() {
-  const tbody = document.getElementById("stats-tbody");
-
-  tbody.innerHTML = "";
-
-  const rows = CATEGORIES.forEach((category) => {
-    const row = CreateStatsRow(category);
-    tbody.appendChild(row);
-  });
 }
