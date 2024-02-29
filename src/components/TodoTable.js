@@ -26,7 +26,7 @@ export function todosTable() {
 
   const caption = document.createElement("caption");
   caption.textContent = "hello there :)";
-  caption.classList.add("caption-top");
+  caption.classList.add("caption-top", "pt-4");
   table.appendChild(caption);
 
   const tableHeaderRow = document.createElement("tr");
