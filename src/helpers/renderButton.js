@@ -27,7 +27,7 @@ export function addButtonsContainer(obj) {
     "mx-auto",
     "p-6",
     "justify-center",
-    "gap-2",
+    "gap-6",
     "w-64"
   );
 
