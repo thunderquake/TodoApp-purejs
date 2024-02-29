@@ -1,6 +1,7 @@
 import { addTodoRow } from "./CreateTodoRow.js";
 import { createCont } from "./Containers.js";
 import { getTableData } from "../helpers/storingData.js";
+import { HEADERS, HEADER_WIDTHS } from "../constants/constants.js";
 
 export function todosTable() {
   const table = document.createElement("table");
@@ -13,7 +14,9 @@ export function todosTable() {
     "border-spacing-x-0",
     "border-spacing-y-2",
     "p-4",
-    "max-w-full"
+    "max-w-full",
+    "min-w-max",
+    "overflow-scroll"
   );
   table.setAttribute("id", "todoTable");
   document.body.appendChild(table);
@@ -26,23 +29,15 @@ export function todosTable() {
   caption.classList.add("caption-top");
   table.appendChild(caption);
 
-  const headers = [
-    "",
-    "Category",
-    "Name",
-    "Date created",
-    "Contents",
-    "Dates",
-    " ",
-  ];
   const tableHeaderRow = document.createElement("tr");
   tableHeaderRow.classList.add("border", "border-slate-500", "pb-2");
   thead.appendChild(tableHeaderRow);
 
-  headers.forEach((header) => {
+  HEADERS.forEach((header, index) => {
     const th = document.createElement("th");
     th.textContent = header;
     th.classList.add("text-left");
+    th.classList.add(HEADER_WIDTHS[index]);
     tableHeaderRow.appendChild(th);
   });
 
