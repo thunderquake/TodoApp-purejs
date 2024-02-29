@@ -8,11 +8,6 @@ import { editModal } from "./components/EditModal.js";
 export function todosPage() {
   const container = document.createElement("div");
 
-  const titleElement = document.createElement("p");
-  titleElement.innerText = "TO-DO list!";
-  titleElement.classList.add("text-3xl", "flex", "justify-center", "p-8");
-  container.appendChild(titleElement);
-
   const todosArchiveButton = renderButton("View Archive", () => {
     renderArchived();
   });
@@ -51,7 +46,8 @@ export function todosPage() {
     "bg-stone-50/60",
     "hover:bg-stone-50/70",
     "rounded-lg",
-    "font-bold"
+    "font-bold",
+    "w-full"
   );
   todosUnarchiveButton.classList.add("overflow-hidden", "shadow-lg");
   container.appendChild(todosUnarchiveButton);

@@ -1,4 +1,5 @@
 import { getTableData } from "../helpers/storingData.js";
+import { createCont } from "./Containers.js";
 import { iconElementRender } from "./IconsButton.js";
 
 export function statsTable() {
@@ -11,13 +12,14 @@ export function statsTable() {
     "mx-auto",
     "border-spacing-x-0",
     "border-spacing-y-2",
-    "p-4",
+    "px-4",
     "max-w-full",
     "min-w-max",
     "overflow-scroll"
   );
   table.setAttribute("id", "statsTable");
-  document.body.appendChild(table);
+
+  const container = createCont(table);
 
   const thead = document.createElement("thead");
   table.appendChild(thead);
@@ -28,10 +30,10 @@ export function statsTable() {
 
   const STATS_HEADERS = ["", "Category", "Not archived", "Archived"];
   STATS_HEADERS.forEach((header) => {
-    const td = document.createElement("td");
-    td.classList.add();
-    td.textContent = header;
-    thead.appendChild(td);
+    const th = document.createElement("th");
+    th.classList.add("text-left");
+    th.textContent = header;
+    thead.appendChild(th);
   });
 
   const tbody = document.createElement("tbody");
@@ -49,7 +51,7 @@ export function statsTable() {
   const thoughtsRow = CreateStatsRow("thoughts");
   tbody.appendChild(thoughtsRow);
 
-  return table;
+  return container;
 }
 
 export function CreateStatsRow(category) {
@@ -63,11 +65,19 @@ export function CreateStatsRow(category) {
 
   const iconTd = document.createElement("td");
   const iconElement = iconElementRender(category);
+  iconElement.classList.add("w-20", "mx-auto");
   iconTd.appendChild(iconElement);
   tr.appendChild(iconTd);
 
   const categoryTd = document.createElement("td");
   categoryTd.textContent = category;
+  categoryTd.classList.add(
+    "text-left",
+    "pr-8",
+    "max-w-40",
+    "text-pretty",
+    "py-4"
+  );
   tr.appendChild(categoryTd);
 
   const notArchivedTd = document.createElement("td");

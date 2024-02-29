@@ -6,7 +6,11 @@ function startApp() {
   document.body.classList.add(
     "bg-gradient-to-r",
     "from-purple-500",
-    "to-pink-500"
+    "to-pink-500",
+    "flex",
+    "items-center",
+    "justify-center",
+    "h-screen"
   );
 
   const rootElement = document.getElementById("root");
@@ -15,6 +19,7 @@ function startApp() {
 
   const todosTableElement = todosTable();
   rootElement.appendChild(todosTableElement);
+  todosTableElement.classList.add("mb-8", "max-h-80");
 
   const statsTableElement = statsTable();
   rootElement.appendChild(statsTableElement);

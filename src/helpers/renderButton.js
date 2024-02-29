@@ -23,11 +23,11 @@ export function addButtonsContainer(obj) {
 
   const container = document.createElement("div");
   container.classList.add(
-    "grid",
+    "flex",
     "mx-auto",
-    "grid-cols-3",
     "p-6",
-    "place-content-center",
+    "justify-center",
+    "gap-2",
     "w-64"
   );
 

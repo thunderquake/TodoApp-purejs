@@ -16,7 +16,7 @@ export function addTodoRow(obj) {
 
   const iconElement = iconElementRender(obj.category);
   addTd(iconElement, tr);
-  iconElement.classList.add("w-20");
+  iconElement.classList.add("w-20", "mx-auto");
 
   const { isArchived, id, contents, ...renderedProperties } = obj;
 
@@ -59,7 +59,7 @@ export function addTodoRow(obj) {
 
 function addTd(value, tr) {
   const td = document.createElement("td");
-  td.classList.add("py-6", "text-left");
+  td.classList.add("py-4", "items-center", "justify-center");
   td.appendChild(value);
   tr.appendChild(td);
 }
