@@ -1,4 +1,5 @@
 import { todosPage } from "./app.js";
+import { statsTable } from "./components/StatisticsTable.js";
 import { todosTable } from "./components/TodoTable.js";
 
 function startApp() {
@@ -14,6 +15,9 @@ function startApp() {
 
   const todosTableElement = todosTable();
   rootElement.appendChild(todosTableElement);
+
+  const statsTableElement = statsTable();
+  rootElement.appendChild(statsTableElement);
 }
 
 startApp();
