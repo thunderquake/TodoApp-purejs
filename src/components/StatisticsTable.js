@@ -1,3 +1,4 @@
+import { CATEGORIES } from "../constants/constants.js";
 import { getTableData } from "../helpers/storingData.js";
 import { createCont } from "./Containers.js";
 import { iconElementRender } from "./IconsButton.js";
@@ -37,19 +38,13 @@ export function statsTable() {
   });
 
   const tbody = document.createElement("tbody");
+  tbody.setAttribute("id", "stats-tbody");
   table.appendChild(tbody);
 
-  const ideaRow = CreateStatsRow("idea");
-  tbody.appendChild(ideaRow);
-
-  const quoteRow = CreateStatsRow("quote");
-  tbody.appendChild(quoteRow);
-
-  const taskRow = CreateStatsRow("task");
-  tbody.appendChild(taskRow);
-
-  const thoughtsRow = CreateStatsRow("thoughts");
-  tbody.appendChild(thoughtsRow);
+  const rows = CATEGORIES.forEach((category) => {
+    const row = CreateStatsRow(category);
+    tbody.appendChild(row);
+  });
 
   return container;
 }
@@ -62,6 +57,7 @@ export function CreateStatsRow(category) {
     "hover:bg-stone-50/70",
     "break-words"
   );
+  tr.setAttribute("id", "stats-tr");
 
   const iconTd = document.createElement("td");
   const iconElement = iconElementRender(category);
@@ -99,4 +95,15 @@ export function howMany(isArchivedValue, category) {
     }
     return counter;
   }, 0);
+}
+
+export function refreshStats() {
+  const tbody = document.getElementById("stats-tbody");
+
+  tbody.innerHTML = "";
+
+  const rows = CATEGORIES.forEach((category) => {
+    const row = CreateStatsRow(category);
+    tbody.appendChild(row);
+  });
 }
