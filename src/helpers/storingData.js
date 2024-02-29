@@ -1,4 +1,5 @@
 import { addTodoRow } from "../components/CreateTodoRow.js";
+import { refreshStats } from "../components/StatisticsTable.js";
 
 export function saveTableData(dataArray) {
   localStorage.setItem("tableData", JSON.stringify(dataArray));
@@ -17,6 +18,8 @@ export function deleteRow(rowId) {
   const tableData = getTableData();
   const data = tableData.filter((row) => row.id !== rowId);
   saveTableData(data);
+
+  refreshStats();
 }
 
 export function changeRowState(note) {
@@ -34,6 +37,8 @@ export function changeRowState(note) {
       return item;
     })
   );
+
+  refreshStats();
 }
 
 export function archiveRow(note) {
