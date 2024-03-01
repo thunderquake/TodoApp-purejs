@@ -10,19 +10,11 @@ function startApp() {
     "flex",
     "items-center",
     "justify-center",
-    "h-screen"
+    "overflow-scroll"
   );
 
   const rootElement = document.getElementById("root");
   const todosPageElement = todosPage();
   rootElement.appendChild(todosPageElement);
-
-  const todosTableElement = todosTable();
-  rootElement.appendChild(todosTableElement);
-  todosTableElement.classList.add("mb-8", "max-h-80");
-
-  const statsTableElement = statsTable();
-  rootElement.appendChild(statsTableElement);
 }
-
 startApp();
