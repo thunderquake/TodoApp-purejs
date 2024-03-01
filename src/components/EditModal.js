@@ -13,7 +13,7 @@ function closeEditModal() {
   const editModal = document.getElementById("edit-modal");
   const overlay = document.getElementById("overlay");
 
-  document.getElementById("inputForm").reset();
+  document.getElementById("editForm").reset();
 
   editModal.classList.add("hidden");
   overlay.classList.add("hidden");
@@ -52,6 +52,7 @@ export function editModal() {
   );
 
   const form = document.createElement("form");
+  form.setAttribute("id", "editForm");
   form.appendChild(allDiv);
   form.classList.add("p-4", "md:p-5");
   editModal.appendChild(form);
@@ -131,19 +132,17 @@ export function editModal() {
 export function openEditModal(obj) {
   const editModal = document.getElementById("edit-modal");
   const overlay = document.getElementById("overlay");
-  const submitButton = document.getElementById("editButton");
+  const editForm = document.getElementById("editForm");
 
-  submitButton.addEventListener("click", () => {
+  editForm.addEventListener("submit", () => {
     const tableData = getTableData();
-
-    const tbody = document.getElementById("tbody");
-    const rowToDelete = document.getElementById(obj.id);
-    tbody.removeChild(rowToDelete);
 
     const nameValue = document.getElementById("editName").value;
     const contentsValue = document.getElementById("editContents").value;
     const categoryValue = document.getElementById("editCategory").value;
     const isArchivedValue = document.getElementById("isArchived").checked;
+
+    if (!nameValue) return;
 
     saveTableData(
       tableData.map((item) =>
