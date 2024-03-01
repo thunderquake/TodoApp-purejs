@@ -1,12 +1,19 @@
 import { renderButton } from "./helpers/renderButton.js";
 import { createThreeColumn } from "./components/Containers.js";
 import { renderArchived, renderUnarchived } from "./helpers/storingData.js";
-import { inputModal, openInputModal } from "./components/inputModal.js";
+import { inputModal, openInputModal } from "./components/InputModal.js";
 import { overlay } from "./components/InputFields.js";
 import { editModal } from "./components/EditModal.js";
+import { todosTable } from "./components/TodoTable.js";
+import { statsTable } from "./components/StatisticsTable.js";
 
 export function todosPage() {
   const container = document.createElement("div");
+  container.classList.add("pt-12");
+
+  const buttonsCont = document.createElement("div");
+  buttonsCont.classList.add("flex", "justify-center", "gap-12", "mb-8");
+  container.appendChild(buttonsCont);
 
   const todosArchiveButton = renderButton("View Archive", () => {
     renderArchived();
@@ -15,11 +22,14 @@ export function todosPage() {
     "text-lg",
     "bg-stone-50/60",
     "hover:bg-stone-50/70",
-    "rounded-lg",
-    "font-bold"
+    "py-2",
+    "px-4",
+    "rounded-full",
+    "font-bold",
+    "min-w-24"
   );
   todosArchiveButton.classList.add("overflow-hidden", "shadow-lg");
-  container.appendChild(todosArchiveButton);
+  buttonsCont.appendChild(todosArchiveButton);
 
   const todosAddButton = renderButton("Add Todo", () => {
     overlay();
@@ -30,13 +40,16 @@ export function todosPage() {
     "text-lg",
     "bg-stone-50/60",
     "hover:bg-stone-50/70",
-    "rounded-lg",
-    "font-bold"
+    "py-2",
+    "px-4",
+    "rounded-full",
+    "font-bold",
+    "min-w-24"
   );
   todosAddButton.classList.add("overflow-hidden", "shadow-lg");
   todosAddButton.setAttribute("data-modal-target", "input-modal");
   todosAddButton.setAttribute("data-modal-toggle", "input-modal");
-  container.appendChild(todosAddButton);
+  buttonsCont.appendChild(todosAddButton);
 
   const todosUnarchiveButton = renderButton("View Current", () => {
     renderUnarchived();
@@ -45,19 +58,21 @@ export function todosPage() {
     "text-lg",
     "bg-stone-50/60",
     "hover:bg-stone-50/70",
-    "rounded-lg",
+    "py-2",
+    "px-4",
+    "rounded-full",
     "font-bold",
-    "w-full"
+    "min-w-24"
   );
   todosUnarchiveButton.classList.add("overflow-hidden", "shadow-lg");
-  container.appendChild(todosUnarchiveButton);
+  buttonsCont.appendChild(todosUnarchiveButton);
 
-  const buttons = createThreeColumn(
-    todosArchiveButton,
-    todosAddButton,
-    todosUnarchiveButton
-  );
-  container.appendChild(buttons);
+  const todosTableElement = todosTable();
+  container.appendChild(todosTableElement);
+  todosTableElement.classList.add("mb-8", "max-h-80");
+
+  const statsTableElement = statsTable();
+  container.appendChild(statsTableElement);
 
   overlay();
   editModal();
