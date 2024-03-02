@@ -1,12 +1,12 @@
-import { changeRowState, deleteRow } from "./storingData.js";
+import { changeRowIsArchivedValue, deleteRow } from "./storingData.js";
 import { buttonIconElementRender } from "../components/IconsButton.js";
 import { editModal, openEditModal } from "../components/EditModal.js";
 import { overlay } from "../components/InputFields.js";
 
-export function renderButton(text, funct) {
+export function renderButton(text, callback) {
   const button = document.createElement("button");
   button.textContent = text;
-  button.addEventListener("click", funct);
+  button.addEventListener("click", callback);
   document.body.appendChild(button);
   return button;
 }
@@ -19,7 +19,8 @@ export function addTdButton(value, tr) {
 }
 
 export function addButtonsContainer(obj) {
-  const { editB, archiveB, deleteB } = buttonIconElementRender();
+  const { editButtonIcon, archiveButtonIcon, deleteButtonIcon } =
+    buttonIconElementRender();
 
   const container = document.createElement("div");
   container.classList.add(
@@ -32,48 +33,37 @@ export function addButtonsContainer(obj) {
   );
 
   const editButton = document.createElement("button");
-  editButton.innerHTML = editB;
-  editButton.classList.add(
-    "bg-white/50",
-    "rounded-lg",
-    "w-10",
-    "h-10",
-    "place-content-center",
-    "flex",
-    "p-2"
-  );
+  editButton.innerHTML = editButtonIcon;
+  assignButtonClasses(editButton);
+
   container.appendChild(editButton);
   editButton.addEventListener("click", () => openEditModal(obj));
 
   const archiveButton = document.createElement("button");
-  archiveButton.innerHTML = archiveB;
-  archiveButton.classList.add(
-    "bg-white/50",
-    "rounded-lg",
-    "w-10",
-    "h-10",
-    "place-content-center",
-    "flex",
-    "p-2"
-  );
+  archiveButton.innerHTML = archiveButtonIcon;
+  assignButtonClasses(archiveButton);
 
-  archiveButton.addEventListener("click", () => changeRowState(obj));
+  archiveButton.addEventListener("click", () => changeRowIsArchivedValue(obj));
   container.appendChild(archiveButton);
 
   const deleteButton = document.createElement("button");
-  deleteButton.innerHTML = deleteB;
-  deleteButton.classList.add(
-    "bg-white/50",
-    "rounded-lg",
-    "w-10",
-    "h-10",
-    "place-content-center",
-    "flex",
-    "p-2"
-  );
+  deleteButton.innerHTML = deleteButtonIcon;
+  assignButtonClasses(deleteButton);
 
   deleteButton.addEventListener("click", () => deleteRow(obj.id));
   container.appendChild(deleteButton);
 
   return container;
+}
+
+function assignButtonClasses(button) {
+  button.classList.add(
+    "bg-white/50",
+    "rounded-lg",
+    "w-10",
+    "h-10",
+    "place-content-center",
+    "flex",
+    "p-2"
+  );
 }

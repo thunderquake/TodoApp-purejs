@@ -11,9 +11,9 @@ export function todosPage() {
   const container = document.createElement("div");
   container.classList.add("pt-12");
 
-  const buttonsCont = document.createElement("div");
-  buttonsCont.classList.add("flex", "justify-center", "gap-12", "mb-8");
-  container.appendChild(buttonsCont);
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.classList.add("flex", "justify-center", "gap-12", "mb-8");
+  container.appendChild(buttonsContainer);
 
   const todosArchiveButton = renderButton("View Archive", () => {
     renderArchived();
@@ -29,7 +29,7 @@ export function todosPage() {
     "min-w-24"
   );
   todosArchiveButton.classList.add("overflow-hidden", "shadow-lg");
-  buttonsCont.appendChild(todosArchiveButton);
+  buttonsContainer.appendChild(todosArchiveButton);
 
   const todosAddButton = renderButton("Add Todo", () => {
     overlay();
@@ -49,7 +49,7 @@ export function todosPage() {
   todosAddButton.classList.add("overflow-hidden", "shadow-lg");
   todosAddButton.setAttribute("data-modal-target", "input-modal");
   todosAddButton.setAttribute("data-modal-toggle", "input-modal");
-  buttonsCont.appendChild(todosAddButton);
+  buttonsContainer.appendChild(todosAddButton);
 
   const todosUnarchiveButton = renderButton("View Current", () => {
     renderUnarchived();
@@ -65,7 +65,7 @@ export function todosPage() {
     "min-w-24"
   );
   todosUnarchiveButton.classList.add("overflow-hidden", "shadow-lg");
-  buttonsCont.appendChild(todosUnarchiveButton);
+  buttonsContainer.appendChild(todosUnarchiveButton);
 
   const todosTableElement = todosTable();
   container.appendChild(todosTableElement);

@@ -1,4 +1,4 @@
-export function createCont(child) {
+export function createContainer(child) {
   const container = document.createElement("div");
   container.classList.add(
     "bg-stone-50/60",
