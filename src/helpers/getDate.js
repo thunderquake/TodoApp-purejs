@@ -9,8 +9,7 @@ export function getDate(noteContent) {
 
   if (noteContent.match(DATEFORMATS)) {
     noteContent.match(DATEFORMATS).forEach((date) => {
-      let formattedDate = date.replaceAll("-", "/");
-      formattedDate = date.replaceAll(".", "/");
+      const formattedDate = date.replaceAll("-", "/").replaceAll(".", "/");
       dates.push(formattedDate);
     });
   }
