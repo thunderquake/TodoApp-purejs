@@ -1,9 +1,5 @@
 import { iconElementRender } from "./IconsButton.js";
-import {
-  getActiveStats,
-  getArchivedStats,
-  getActiveStats,
-} from "../helpers/manageStats.js";
+import { getActiveStats, getArchivedStats } from "../helpers/manageStats.js";
 
 export function CreateStatsRow(category) {
   const tr = document.createElement("tr");

@@ -1,5 +1,5 @@
 import { CATEGORIES } from "../constants/constants.js";
-import { createCont } from "./Containers.js";
+import { createContainer } from "./Containers.js";
 import { CreateStatsRow } from "./CreateStatsRow.js";
 
 export function statsTable() {
@@ -19,7 +19,7 @@ export function statsTable() {
   );
   table.setAttribute("id", "statsTable");
 
-  const container = createCont(table);
+  const container = createContainer(table);
 
   const thead = document.createElement("thead");
   table.appendChild(thead);

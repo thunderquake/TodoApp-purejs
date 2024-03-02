@@ -19,8 +19,8 @@ export function buttonIconElementRender() {
   deleteIconElement.classList.add("w-6", "h-6");
 
   return {
-    editB: editIconElement.outerHTML,
-    archiveB: archiveIconElement.outerHTML,
-    deleteB: deleteIconElement.outerHTML,
+    editButtonIcon: editIconElement.outerHTML,
+    archiveButtonIcon: archiveIconElement.outerHTML,
+    deleteButtonIcon: deleteIconElement.outerHTML,
   };
 }

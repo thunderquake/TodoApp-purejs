@@ -1,5 +1,5 @@
 import { addTodoRow } from "./CreateTodoRow.js";
-import { createCont } from "./Containers.js";
+import { createContainer } from "./Containers.js";
 import { getTableData } from "../helpers/storingData.js";
 import { HEADERS, HEADER_WIDTHS } from "../constants/constants.js";
 
@@ -47,7 +47,7 @@ export function todosTable() {
 
   const filteredData = getTableData().filter((note) => !note.isArchived);
 
-  const container = createCont(table);
+  const container = createContainer(table);
   filteredData.forEach((todo) => {
     addTodoRow(todo);
   });
