@@ -20,4 +20,4 @@ export const HEADER_WIDTHS = [
   "w-48",
 ];
 
-export const STATS_HEADERS = ["", "Category", "Not archived", "Archived"];
+export const STATS_HEADERS = ["", "Category", "Active", "Archived"];
