@@ -1,5 +1,9 @@
 import { iconElementRender } from "./IconsButton.js";
-import { howMany } from "../helpers/manageStats.js";
+import {
+  getActiveStats,
+  getArchivedStats,
+  getActiveStats,
+} from "../helpers/manageStats.js";
 
 export function CreateStatsRow(category) {
   const tr = document.createElement("tr");
@@ -29,11 +33,11 @@ export function CreateStatsRow(category) {
   tr.appendChild(categoryTd);
 
   const notArchivedTd = document.createElement("td");
-  notArchivedTd.textContent = howMany(false, category);
+  notArchivedTd.textContent = getActiveStats(category);
   tr.appendChild(notArchivedTd);
 
   const archivedTd = document.createElement("td");
-  archivedTd.textContent = howMany(true, category);
+  archivedTd.textContent = getArchivedStats(category);
   tr.appendChild(archivedTd);
 
   return tr;

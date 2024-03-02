@@ -16,13 +16,13 @@ export function deleteRow(rowId) {
   tbody.removeChild(rowToDelete);
 
   const tableData = getTableData();
-  const data = tableData.filter((row) => row.id !== rowId);
-  saveTableData(data);
+  const filteredData = tableData.filter((row) => row.id !== rowId);
+  saveTableData(filteredData);
 
   refreshStats();
 }
 
-export function changeRowState(note) {
+export function changeRowIsArchivedValue(note) {
   const tableData = getTableData();
 
   const tbody = document.getElementById("tbody");
