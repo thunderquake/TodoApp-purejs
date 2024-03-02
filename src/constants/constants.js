@@ -19,3 +19,5 @@ export const HEADER_WIDTHS = [
   "w-40",
   "w-48",
 ];
+
+export const STATS_HEADERS = ["", "Category", "Not archived", "Archived"];

@@ -1,4 +1,4 @@
-import { CATEGORIES } from "../constants/constants.js";
+import { CATEGORIES, STATS_HEADERS } from "../constants/constants.js";
 import { createContainer } from "./Containers.js";
 import { CreateStatsRow } from "./CreateStatsRow.js";
 
@@ -28,7 +28,6 @@ export function statsTable() {
   tableHeaderRow.classList.add("border", "border-slate-500", "pb-2");
   thead.appendChild(tableHeaderRow);
 
-  const STATS_HEADERS = ["", "Category", "Not archived", "Archived"];
   STATS_HEADERS.forEach((header) => {
     const th = document.createElement("th");
     th.classList.add("text-left");
