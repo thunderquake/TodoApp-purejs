@@ -41,19 +41,6 @@ export function changeRowIsArchivedValue(note) {
   refreshStats();
 }
 
-export function archiveRow(note) {
-  const tableData = getTableData();
-
-  saveTableData(
-    tableData.map((item) => {
-      if (item.id === note.id) {
-        return { ...item, isArchived: !item.isArchived };
-      }
-      return item;
-    })
-  );
-}
-
 export function assignIdNote(note) {
   const tableData = getTableData();
   const createdNote = { ...note, id: crypto.randomUUID() };
